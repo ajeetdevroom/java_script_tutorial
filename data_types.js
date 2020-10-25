@@ -1,4 +1,4 @@
-console.log('javaScript data types');
+console.log('javaScript data_types');
 // primitive data types 
 // store in stack
 /* 
