@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="/bootstrap5/css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" href="CURD_op_js.css">
+
+    <title>CURD Operation</title>
+</head>
+
+<body>
+    <div>
+        <h3>Add Student list</h3>
+        <hr>
+    </div>
+    <div class="container">
+        <div class="row g-2">
+            <div class="col-auto">
+                <input type="text" class="form-control" id="inputStuName" placeholder="Enter student name">
+            </div>
+            <div class="col-auto">
+                <button type="submit" class="btn btn-success mb-3" onclick="addStu()">Add</button>
+            </div>
+        </div>
+    </div>
+    <div>
+        <h3>Added Student list</h3>
+        <hr>
+    </div>
+    <div class="container" id="stuListCotainer"></div>
+
+    <script src="/bootstrap5/js/bootstrap.js"></script>
+    <script src="CURD_op_js.js"></script>
+
+</body>
+
+</html>
