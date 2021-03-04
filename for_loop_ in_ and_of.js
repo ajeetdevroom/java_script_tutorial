@@ -11,18 +11,17 @@ let person_obj = {
 console.log("\n");
 console.log("traditional for loop");
 // for (let index = 0; index < array.length; index++) {
-//     const element = array[index];
-    
+//     const element = array[index];    
 // }
+
 for (let index = 0; index < name_arr.length; index++) {
     console.log(name_arr[index]);
 }
 
 console.log("\n");
 console.log("for each loop");
-// array.forEach(element => {
-    
-// });
+// array.forEach(element => { 
+//});
 name_arr.forEach(element => {
     console.log(element);
 });
@@ -32,7 +31,6 @@ console.log("for in loop");
 // for (const key in object) {
 //     if (object.hasOwnProperty(key)) {
 //         const element = object[key];
-        
 //     }
 // }
 for (const key_name in person_obj) {
@@ -40,7 +38,6 @@ for (const key_name in person_obj) {
         const key_val = person_obj[key_name];
         console.log(key_name + " " + key_val);
     }
-  
 }
 console.log("\n");
 console.log("for of loop");
