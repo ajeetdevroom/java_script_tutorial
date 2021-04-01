@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>XMLHttpRequest</title>
+</head>
+
+<body>
+    <h1>XMLHttpRequest</h1>
+    <button onclick="usingEventListener()">addEventListener</button>
+    <button onclick="usingOnreadystatechange()">UsingOnreadystatechange</button>
+    <button onclick="callXMLHttp()">callXMLHttp</button>
+    <button onclick="postRequest()">postRequest</button>
+    <p id="p-responce"></p>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function usingEventListener() {
+            function reqListener() {
+                console.log(this.responseText);
+            }
+
+            var oReq = new XMLHttpRequest();
+            oReq.addEventListener("load", reqListener);
+            oReq.open("GET", "https://api.github.com/users");
+            oReq.send();
+        }
+    </script>
+    <script>
+        function usingOnreadystatechange() {
+            var xhttp = new XMLHttpRequest();
+            // xhttp.onreadystatechange = function () {
+            //     if (this.readyState == 4 && this.status == 200) {
+            //         document.getElementById("p-responce").innerHTML =
+            //             this.responseText;
+            //     }
+            // };
+            xhttp.onreadystatechange = function () {
+                if (xhttp.readyState == 1) {
+                    console.log('Request started.');
+                }
+
+                if (xhttp.readyState == 2) {
+                    console.log('Headers received.');
+                }
+
+                if (xhttp.readyState == 3) {
+                    console.log('Data loading..!');
+                }
+                if (xhttp.readyState == 4) {
+                    console.log('Request ended.');
+                }
+            };
+            xhttp.open("GET", "http://dummy.restapiexample.com/api/v1/employees");
+            xhttp.send();
+        }
+    </script>
+    <script>
+        function callXMLHttp() {
+            const xhr = new XMLHttpRequest();
+            xhr.open('GET', 'https://api.jsonbin.io/b/5d5076e01ec3937ed4d05eab/1');
+            // set response format
+            xhr.responseType = 'json';
+            xhr.send();
+            xhr.onload = () => {
+                // get JSON response
+                const user = xhr.response;
+                // log details
+
+                console.log(user.name); // John Doe
+                console.log(user.email); // john.doe@example.com
+                console.log(user.website); // http://example.com
+                // listen for `load` event
+                console.log(`Data Loaded: ${xhr.status} ${xhr.response}`);
+            }
+
+            // listen for `error` event
+            xhr.onerror = () => {
+                console.error('Request failed.');
+            }
+
+            // listen for `progress` event
+            xhr.onprogress = (event) => {
+                // event.loaded returns how many bytes are downloaded
+                // event.total returns the total number of bytes
+                // event.total is only available if server sends `Content-Length` header
+                console.log(`Downloaded ${event.loaded} of ${event.total}`);
+            }
+        }
+    </script>
+    <script>
+        function postRequest() {
+            const xhr = new XMLHttpRequest();
+            // configure a `POST` request
+            xhr.open('POST', '/login');
+            // prepare form data
+            let params = 'username=attacomsian&password=123456';
+            // set `Content-Type` header
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            // pass `params` to `send()` method
+            xhr.send(params);
+            // listen for `load` event
+            xhr.onreadystatechange = gonload();
+            function gonload() {
+                console.log(xhr.responseText);
+            }
+        }
+    </script>
+    <script>
+        function myCallBack() {
+            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                console.log(xmlhttp.responseText);
+            }
+        }
+
+        function start() {
+            var xmlhttp = new XMLHttpRequest();
+            var contentDiv = document.getElementById("Content");
+            xmlhttp.open("POST", "Demo", true);
+            xmlhttp.onreadystatechange = myCallBack;
+            xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset=UTF-8");
+            xmlhttp.send("FirstName=Nat&LastName=Dunn");
+        }
+    </script>
+</body>
+
+</html>

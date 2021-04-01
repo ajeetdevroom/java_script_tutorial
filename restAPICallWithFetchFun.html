@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Page Title</title>
+</head>
+
+<body>
+    <!-- 
+    The API includes a lot more, but start with the fetch() method. It takes two arguments:
+    
+    1. A URL or an object representing the request.
+    2. Optional init object containing the method, headers, body etc. 
+        more about is on https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API
+-->
+
+    <script>
+        // Simple GET:
+        const userAction = async () => {
+            const response = await fetch('http://example.com/movies.json');
+            const myJson = await response.json(); //extract JSON from the http response
+            // do something with myJson
+        }
+    </script>
+    <script>
+        // Recreating the previous top answer, a POST:
+        const userAction = async () => {
+            const response = await fetch('http://example.com/movies.json', {
+                method: 'POST',
+                body: myBody, // string or object
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+            const myJson = await response.json(); //extract JSON from the http response
+            // do something with myJson
+        }
+    </script>
+
+</body>
+
+</html>
