@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>image</title>
+    <style type="text/css">   
+		#slides {
+		    position: relative;
+		    height: 400px;
+		    padding: 0px;
+		    margin: 0px;
+		    list-style-type: none;
+		}
+
+		.slide {
+		    position: absolute;
+		    left: 0px;
+		    top: 0px;
+		    width: 100%;
+		    height: 100%;
+		    opacity: 0;
+		    z-index: 1;
+		    font-size: 40px;
+		    background: #333;
+		    color: #fff;
+
+		    -webkit-transition: opacity 1s;
+		    -moz-transition: opacity 1s;
+		    -o-transition: opacity 1s;
+		    transition: opacity 1s;
+		}
+
+		.showing {
+		    opacity: 1;
+		    z-index: 2;
+		}
+		/* if image not show then see this background color */
+			.slide:nth-of-type(1) {
+			    background: red;
+			}
+			.slide:nth-of-type(2) {
+			    background: orange;
+			}
+			.slide:nth-of-type(3) {
+			    background: green;
+			}
+			.slide:nth-of-type(4) {
+			    background: blue;
+			}
+			.slide:nth-of-type(5) {
+			    background: purple;
+			}
+			.slider-container{
+				position: relative;
+			}
+.next{
+	position: absolute;
+	top: 50%;
+	right: 0px;
+	z-index: 10;
+}
+.pre{
+	position: absolute;
+	top: 50%;
+	left: 0px;
+	z-index: 10;
+}
+.img-class{
+	width: 100%;
+} 
+</style>
+</head>
+<body>
+<div class="slider-container">
+	<ul id="slides">
+    <li class="slide showing"><img class="img-class" src="image/0.jpg"></li>
+    <li class="slide"><img class="img-class" src="image/1.jpg"></li>
+    <li class="slide"><img class="img-class" src="image/2.jpg"></li>
+    <li class="slide"><img class="img-class" src="image/1.jpg"></li>
+    <li class="slide"><img class="img-class" src="image/2.jpg"></li>
+	</ul>
+	<button class="next" onclick="nextSlide()">Next-slide</button>
+	<button class="pre" onclick="preSlide()">previous-slide</button>
+</div>
+   
+   <script type="text/javascript">
+   		var slides = document.querySelectorAll('#slides .slide');
+		var currentSlide = 0;
+		var slideInterval = setInterval(nextSlide,5000);
+		function nextSlide() {
+		    slides[currentSlide].className = 'slide';
+		    currentSlide = (currentSlide+1)%slides.length;
+		    slides[currentSlide].className = 'slide showing';
+		}
+		function preSlide() {
+		    slides[currentSlide].className = 'slide';
+		    currentSlide = (currentSlide-1)%slides.length;
+		    slides[currentSlide].className = 'slide showing';
+		}
+    </script>
+  
+</body>
+</html>
+    
